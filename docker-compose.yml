@@ -1,8 +1,8 @@
 version: '3'
 services:
   taigabot:
-    #image: sameersbn/postgresql:9.6-2
-    build: .
+    image: sopitz/taigabot
+    #build: .
     deploy:
       replicas: 0
       restart_policy:
