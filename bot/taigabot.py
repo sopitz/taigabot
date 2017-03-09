@@ -5,9 +5,6 @@ import os
 import time
 import json
 
-# pip install python-taiga
-# pip install slackclient
-
 # constants
 BOT_ID = os.environ.get("BOT_ID")
 TG_PATTERN = "tg#"
@@ -17,7 +14,7 @@ BASE_URL = 'https://taiga.silicon.dev.espp.eon.com/'
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 api = TaigaAPI(host=BASE_URL)
 
-with open('./config/credentials.json') as credentials_file:
+with open('config/credentials.json') as credentials_file:
     data = json.load(credentials_file)
 
 api.auth(
