@@ -1,3 +1,2 @@
-access_tokens
-credentials.json
-resources/python-taiga
+bot/config/credentials.json
+bot.env

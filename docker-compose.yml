@@ -7,6 +7,5 @@ services:
       replicas: 0
       restart_policy:
         condition: none
-    environment:
-      - BOT_ID=U4EKJCASV
-      - SLACK_BOT_TOKEN=xoxb-150664418913-2jhmYoo9AX831WbcQMwdByYc
+    env_file:
+      - ./bot.env
