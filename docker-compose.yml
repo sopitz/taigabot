@@ -1,8 +1,8 @@
 version: '3'
 services:
   taigabot:
-    image: sopitz/taigabot
-    #build: .
+    #image: sopitz/taigabot
+    build: .
     deploy:
       replicas: 0
       restart_policy:

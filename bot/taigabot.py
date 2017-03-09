@@ -9,6 +9,7 @@ TG_PATTERN = 'tg#'
 TG_BASE_URL = os.environ.get('taiga_host')
 TG_USER = os.environ.get('taiga_user')
 TG_PASSWORD = os.environ.get('taiga_pass')
+TG_PROJECT = os.environ.get('taiga_project')
 
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
@@ -26,8 +27,8 @@ def fetch_taiga(message, channel, thread, user):
             print (match)
             text_response = ""
 
-            project = api.projects.get_by_slug('admin-eon-customer-stream-pv2020-1')
-            project.name = 'admin-eon-customer-stream-pv2020-1'
+            project = api.projects.get_by_slug(TG_PROJECT)
+            project.name = TG_PROJECT
             tg_element_id = match.lower().split(TG_PATTERN)[1].strip().lower()
             taiga_element = project.get_item_by_ref(tg_element_id)
             if taiga_element is not None:
