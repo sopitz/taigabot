@@ -3,7 +3,6 @@ from taiga import TaigaAPI
 import re
 import os
 import time
-import json
 
 BOT_ID = os.environ.get('BOT_ID')
 TG_PATTERN = 'tg#'
