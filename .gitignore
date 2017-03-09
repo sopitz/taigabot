@@ -1,2 +1,3 @@
 bot/config/credentials.json
 bot.env
+taiga.env

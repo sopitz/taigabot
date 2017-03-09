@@ -9,3 +9,4 @@ services:
         condition: none
     env_file:
       - ./bot.env
+      - ./taiga.env

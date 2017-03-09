@@ -5,21 +5,18 @@ import os
 import time
 import json
 
-# constants
-BOT_ID = os.environ.get("BOT_ID")
-TG_PATTERN = "tg#"
-BASE_URL = 'https://taiga.silicon.dev.espp.eon.com/'
+BOT_ID = os.environ.get('BOT_ID')
+TG_PATTERN = 'tg#'
+TG_BASE_URL = os.environ.get('taiga_host')
+TG_USER = os.environ.get('taiga_user')
+TG_PASSWORD = os.environ.get('taiga_pass')
 
-# instantiate Slack & Twilio clients
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
-api = TaigaAPI(host=BASE_URL)
 
-with open('config/credentials.json') as credentials_file:
-    data = json.load(credentials_file)
-
+api = TaigaAPI(host=TG_BASE_URL)
 api.auth(
-    username=data["taiga"]["user"],
-    password=data["taiga"]["pass"]
+    username = TG_USER,
+    password = TG_PASSWORD
 )
 
 def fetch_taiga(message, channel, thread, user):
@@ -52,7 +49,7 @@ def fetch_taiga(message, channel, thread, user):
                         "pretext": taiga_element.element_type+" "+tg_element_id+" ("+taiga_element.subject+")",
                         "author_name": taiga_element.element_type,
                         "title": taiga_element.subject,
-                        "title_link": BASE_URL+"project/"+project.name+"/"+taiga_element.element_shortcut+"/"+tg_element_id,
+                        "title_link": TG_BASE_URL+"project/"+project.name+"/"+taiga_element.element_shortcut+"/"+tg_element_id,
                         "text": taiga_element.description,
                         "footer": "https://taiga.silicon.dev.espp.eon.com",
                         "footer_icon": "https://taiga.io/images/favicon/android-icon-192x192.png"
