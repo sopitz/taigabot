@@ -8,5 +8,5 @@ services:
       restart_policy:
         condition: none
     env_file:
-      - ./bot.env
-      - ./taiga.env
+      - ./resources/env.files/bot.env
+      - ./resources/env.files/taiga.env
