@@ -20,7 +20,7 @@ api.auth(
 )
 
 def fetch_taiga(message, channel, thread, user):
-    m = re.findall('tg#\d*', message.lower())
+    m = set(re.findall('tg#\d*', message.lower()))
     attachments = []
     if m:
         for match in m:
